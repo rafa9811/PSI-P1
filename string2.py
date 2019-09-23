@@ -17,14 +17,13 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-    # +++your code here+++
-	if len(s) < 3:
-		return s
-	elif s[-3:] == "ing":
-		return s + 'ly'
-	else:
-		return s + 'ing'
-	return
+    if len(s) < 3:
+        return s
+    elif s[-3:] == "ing":
+        return s + 'ly'
+    else:
+        return s + 'ing'
+    return
 
 
 # E. not_bad
@@ -36,12 +35,10 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-    # +++your code here+++
-	if s.find('not') < s.find('bad'):
-		return s[0:s.find('not')] + 'good' + s[s.find('bad')+3:]
-	else:
-		return s
-
+    if s.find('not') < s.find('bad'):
+        return s[0:s.find('not')] + 'good' + s[s.find('bad')+3:]
+    else:
+        return s
 
 
 # F. front_back
@@ -52,19 +49,21 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    # +++your code here+++
-	if len(a)%2 == 0:
-		if len(b)%2 == 0:
-			return a[0:(len(a)//2)] + b[0:(len(b)//2)] + a[(len(a)//2):] + b[(len(b)//2):]
-		else:
-			return a[0:(len(a)//2)] + b[0:(len(b)//2 + 1)] + a[(len(a)//2):] + b[(len(b)//2 + 1):]
-
-	else:
-		if len(b)%2 == 0:
-			return a[0:(len(a)//2 + 1)] + b[0:(len(b)//2)] + a[(len(a)//2 + 1):] + b[(len(b)//2):]
-		else:
-			return a[0:(len(a)//2 + 1)] + b[0:(len(b)//2 + 1)] + a[(len(a)//2 + 1):] + b[(len(b)//2 + 1):]
-	return
+    if len(a) % 2 == 0:
+        if len(b) % 2 == 0:
+            return a[0:(len(a)//2)] + b[0:(len(b)//2)] + \
+                   a[(len(a)//2):] + b[(len(b)//2):]
+        else:
+            return a[0:(len(a)//2)] + b[0:(len(b)//2 + 1)] + \
+                   a[(len(a)//2):] + b[(len(b)//2 + 1):]
+    else:
+        if len(b) % 2 == 0:
+            return a[0:(len(a)//2 + 1)] + b[0:(len(b)//2)] + \
+                   a[(len(a)//2 + 1):] + b[(len(b)//2):]
+        else:
+            return a[0:(len(a)//2 + 1)] + b[0:(len(b)//2 + 1)] + \
+                   a[(len(a)//2 + 1):] + b[(len(b)//2 + 1):]
+    return
 
 
 # Simple provided test() function used in main() to print
