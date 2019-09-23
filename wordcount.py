@@ -45,25 +45,62 @@ import sys
 # You could write a helper utility function that reads a file
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
-
+def print_words(filename):
+	f = open(filename, 'rU')
+	hash = {}
+	for line in f:
+		linesplit = line.lower()
+		linesplit = linesplit.split('\n')
+		for line2 in linesplit:
+			linesplit2 = line2.split()
+			for word in linesplit2:
+				if word == '':
+					continue
+				elif word in hash:
+					hash[word] += 1
+				else:
+					hash[word] = 1
+	for w in sorted(hash.keys()):
+		print(w, hash[w])
+	f.close()
 ###
+def print_top(filename):
+	f = open(filename, 'rU')
+	hash = {}
+	for line in f:
+		linesplit = line.lower()
+		linesplit = linesplit.split('\n')
+		for line2 in linesplit:
+			linesplit2 = line2.split()
+			for word in linesplit2:
+				if word == '':
+					continue
+				elif word in hash:
+					hash[word] += 1
+				else:
+					hash[word] = 1
+	hash_ordered = sorted(hash.items(), key = lambda x : x[1])
+	top = hash_ordered.reverse()
+	for t in hash_ordered[0:20]:
+		print(t[0], t[1])
+	f.close()
 
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
 def main():
-    if len(sys.argv) != 3:
-        print('usage: ./wordcount.py {--count | --topcount} file')
-        sys.exit(1)
+	    if len(sys.argv) != 3:
+	        print('usage: ./wordcount.py {--count | --topcount} file')
+	        sys.exit(1)
 
-    option = sys.argv[1]
-    filename = sys.argv[2]
-    if option == '--count':
-        print_words(filename)
-    elif option == '--topcount':
-        print_top(filename)
-    else:
-        print('unknown option: ' + option)
-        sys.exit(1)
+	    option = sys.argv[1]
+	    filename = sys.argv[2]
+	    if option == '--count':
+	        print_words(filename)
+	    elif option == '--topcount':
+	        print_top(filename)
+	    else:
+	        print('unknown option: ' + option)
+	        sys.exit(1)
 
 
 if __name__ == '__main__':
