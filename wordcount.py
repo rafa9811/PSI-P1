@@ -80,10 +80,10 @@ def print_top(filename):
                     hash[word] += 1
                 else:
                     hash[word] = 1
-        hash_ordered = sorted(hash.items(), key=lambda x: x[1])
-        top = hash_ordered.reverse()
-        for t in top[0:20]:
-            print(t[0], t[1])
+    hash_ordered = sorted(hash.items(), key=lambda x: x[1])
+    hash_ordered.reverse()
+    for t in hash_ordered[0:20]:
+        print(t[0], t[1])
     f.close()
 
 
